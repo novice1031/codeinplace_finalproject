@@ -4,7 +4,6 @@ File: searchengine.py
 You fill in this comment
 """
 
-
 import os
 import sys
 import string
@@ -43,12 +42,6 @@ def create_index(filenames, index, file_titles):
                         index[normalized_term] = [filename]
 
 
-
-
-
-
-
-
 def search(index, query):
     """
     This function is passed:
@@ -59,7 +52,6 @@ def search(index, query):
 
     The function returns a list of the names of all the files that contain *all* of the
     terms in the query (using the index passed in)."""
-
 
     terms = query.split()
 
@@ -83,6 +75,7 @@ def search(index, query):
 
     return result
 
+
 ##### YOU SHOULD NOT NEED TO MODIFY ANY CODE BELOW THIS LINE (UNLESS YOU'RE ADDING EXTENSIONS) #####
 
 
@@ -94,14 +87,14 @@ def do_searches(index, file_titles):
     """
     while True:
         query = input("Query (empty query to stop): ")
-        query = query.lower()                   # convert query to lowercase
+        query = query.lower()  # convert query to lowercase
         if query == '':
             break
         results = search(index, query)
 
         # display query results
         print("Results for query '" + query + "':")
-        if results:                             # check for non-empty results list
+        if results:  # check for non-empty results list
             for i in range(len(results)):
                 title = file_titles[results[i]]
                 print(str(i + 1) + ".  Title: " + title + ",  File: " + results[i])
@@ -151,8 +144,8 @@ def main():
         if os.path.exists(directory):
             # Build index from files in the given directory
             files = textfiles_in_dir(directory)
-            index = {}          # index is empty to start
-            file_titles = {}    # mapping of file names to article titles is empty to start
+            index = {}  # index is empty to start
+            file_titles = {}  # mapping of file names to article titles is empty to start
             create_index(files, index, file_titles)
 
             # Either allow the user to search using the index, or just print the index
@@ -169,4 +162,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
